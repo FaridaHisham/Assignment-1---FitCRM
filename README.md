@@ -87,67 +87,9 @@ Pages
 
 
 Deployment
-----------
-You can deploy using either Netlify or GitHub Pages.
+-----
 
-Option 1: Deploy to Netlify
-1. Go to `https://www.netlify.com` and create an account.
-2. Click “Add New Site” → “Import an Existing Project”.
-3. Connect your GitHub account and select your repository.
-4. Build settings: No build command needed; publish directory is the repository root.
-5. Click Deploy. Netlify will provide a live URL (you can rename it later).
-
-Option 2: Deploy to GitHub Pages
-1. Push your code to a GitHub repository (public).
-2. In your repo, go to Settings → Pages.
-3. Under “Source”, select the branch (e.g., `main`) and the folder `/root`.
-4. Save and wait for GitHub Pages to publish your site.
-5. Your site will be available at a URL like `https://username.github.io/fitcrm/`.
-
-
-Submission Guidelines
----------------------
-Include the following in your submission:
-
-1) **GitHub Repository Link**
-   - Must be public
-   - Code should be well‑organized with proper file structure and comments
-
-2) **Live App Link**
-   - Either GitHub Pages or Netlify URL
-
-3) **If deployment is not working**, include one of the following:
-   - A clear explanation in this README with screenshots, or
-   - Local instructions to open the project (see Getting Started)
-
-4) **README.md must include**:
-   - Brief description of the project
-   - Tech stack used
-   - Deployment method (Netlify or GitHub Pages)
-
-
-Screenshots (Optional but Recommended)
---------------------------------------
-Add screenshots or GIFs of:
-- New Client Form (desktop and mobile)
-- Client List View with search box (desktop and mobile)
-
-You can place images in `assets/` and reference them here, for example:
 ```
-![FitCRM – New Client Form](assets/screenshots/new-client-form.png)
-![FitCRM – Client List](assets/screenshots/client-list.png)
+https://faridafitcrm.netlify.app/
+
 ```
-
-
-Notes & Limitations
--------------------
-- This is a static prototype without data persistence.
-- Edit/Delete actions and Add Client button are non‑functional placeholders.
-- For a production system, you would add JavaScript for interactivity and a backend/API for data storage.
-
-
-License
--------
-You may use, modify, and distribute this project for educational purposes. If you plan to use it commercially, please add an appropriate license (e.g., MIT) and update this section accordingly.
-
-
