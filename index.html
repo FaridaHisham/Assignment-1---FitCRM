@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FitCRM – Simple Client Manager</title>
+  <title>FitCRM – Client Manager</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
   <!-- App Shell -->
   <header class="app-header">
@@ -14,7 +16,6 @@
       <span>FitCRM</span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <!-- Only the two options we have so far -->
       <a href="#new" class="nav-link">New Client</a>
       <a href="#list" class="nav-link">Client List</a>
     </nav>
@@ -24,13 +25,22 @@
     <!-- Home (landing) -->
     <section id="home" class="page">
       <div class="hero card">
-        <h1>Welcome to FitCRM</h1>
-        <p class="subtle">
-          A simple, lightweight way to collect client details and view your roster.
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#new">Add Your First Client</a>
-          <a class="btn" href="#list">View Client List</a>
+        <div class="hero-images">
+          <div class="hero-image">
+            <img
+              src="https://img.freepik.com/premium-photo/fitness-person-workout-gym-clothes-strong-muscle-with-hands-waist_130412-44450.jpg"
+              alt="Fitness person working out" />
+          </div>
+          <div class="hero-image">
+            <img src="https://img.freepik.com/premium-photo/fit-tall-man-sleek-purple-sportswear_153608-24194.jpg"
+              alt="Fit man in purple sportswear" />
+          </div>
+        </div>
+        <div class="hero-text">
+          <h1>Welcome to FitCRM</h1>
+          <p class="subtle">
+            A simple, lightweight way to collect client details and view your roster.
+          </p>
         </div>
       </div>
 
@@ -61,7 +71,7 @@
 
         <div class="form-field">
           <label for="age">Age</label>
-          <input id="age" name="age" type="number" min="0" max="120" placeholder="e.g., 29" required />
+          <input id="age" name="age" type="number" min="5" max="120" placeholder="e.g., 29" required />
         </div>
 
         <div class="form-field">
@@ -104,8 +114,18 @@
           <input id="startDate" name="startDate" type="date" required />
         </div>
 
+        <div class="form-field">
+          <label for="endDate">Membership End Date</label>
+          <input id="endDate" name="endDate" type="date" required />
+        </div>
+
         <div class="form-actions">
-          <button type="button" class="btn primary">Add Client</button>
+          <button id="addClientBtn" type="button" class="btn primary">
+            Add Client
+          </button>
+          <button id="cancelEditBtn" type="button" class="btn danger" style="display: none;">
+            Cancel Edit
+          </button>
           <a class="btn ghost" href="#list">Go to Client List</a>
         </div>
       </form>
@@ -115,7 +135,9 @@
     <section id="list" class="page">
       <header class="page-header">
         <h1>Clients</h1>
-        <p class="subtle">Search and manage clients.</p>
+        <p class="subtle">
+          Search and manage clients.<span id="clientCountText"></span>
+        </p>
       </header>
 
       <div class="card">
@@ -126,7 +148,7 @@
               <img src="assets/icons/search.svg" alt="" aria-hidden="true" />
               <input id="searchName" type="search" placeholder="Search by client name…" />
             </div>
-            <button class="btn" type="button" disabled>Search</button>
+            <button id="searchBtn" class="btn" type="button">Search</button>
           </div>
           <a href="#new" class="btn primary">Add New</a>
         </div>
@@ -140,134 +162,64 @@
                 <th scope="col">Phone</th>
                 <th scope="col">Fitness Goal</th>
                 <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
                 <th scope="col" class="actions-col">Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <!-- 10 sample rows (unchanged except icons) -->
-              <tr>
-                <td>Sarah Mahmoud</td><td>sarah.m@example.com</td><td>+20 100 111 2222</td>
-                <td>Weight Loss</td><td>2025-09-01</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Sarah Mahmoud">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Sarah Mahmoud">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Ahmed Nassar</td><td>ahmed.n@example.com</td><td>+20 110 222 3333</td>
-                <td>Muscle Gain</td><td>2025-08-15</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Ahmed Nassar">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Ahmed Nassar">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Lamia Farag</td><td>lamia.f@example.com</td><td>+20 120 333 4444</td>
-                <td>General Fitness</td><td>2025-07-10</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Lamia Farag">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Lamia Farag">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Mostafa El Sayed</td><td>mostafa.s@example.com</td><td>+20 115 444 5555</td>
-                <td>Endurance</td><td>2025-06-20</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Mostafa El Sayed">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Mostafa El Sayed">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Nour Adel</td><td>nour.adel@example.com</td><td>+20 101 555 6666</td>
-                <td>Mobility & Flexibility</td><td>2025-05-25</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Nour Adel">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Nour Adel">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Omar Hassan</td><td>omar.h@example.com</td><td>+20 109 666 7777</td>
-                <td>Muscle Gain</td><td>2025-04-30</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Omar Hassan">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Omar Hassan">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Dina Fouad</td><td>dina.f@example.com</td><td>+20 103 777 8888</td>
-                <td>Weight Loss</td><td>2025-04-01</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Dina Fouad">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Dina Fouad">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Karim Youssef</td><td>karim.y@example.com</td><td>+20 122 888 9999</td>
-                <td>General Fitness</td><td>2025-03-18</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Karim Youssef">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Karim Youssef">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Rana Gamal</td><td>rana.g@example.com</td><td>+20 114 999 0000</td>
-                <td>Endurance</td><td>2025-02-10</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Rana Gamal">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Rana Gamal">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Yahia Morsi</td><td>yahia.m@example.com</td><td>+20 118 000 1111</td>
-                <td>Muscle Gain</td><td>2025-01-05</td>
-                <td class="row-actions">
-                  <button class="icon-btn" type="button" disabled aria-label="Edit Yahia Morsi">
-                    <img src="assets/icons/edit.svg" alt="">
-                  </button>
-                  <button class="icon-btn danger" type="button" disabled aria-label="Delete Yahia Morsi">
-                    <img src="assets/icons/delete.svg" alt="">
-                  </button>
-                </td>
-              </tr>
+            <tbody id="clientTableBody">
+              <!-- Rows are injected by js/main.js -->
             </tbody>
           </table>
         </div>
+      </div>
+    </section>
+
+    <!-- Client View (Page 3) -->
+    <section id="client-view" class="page">
+      <header class="page-header">
+        <h1>Client Details</h1>
+        <p class="subtle">
+          Review this client's info, training history, and next session plan.
+        </p>
+      </header>
+
+      <!-- Basic client info -->
+      <div class="card">
+        <h2 id="viewName">Client Name</h2>
+
+        <p><strong>Email:</strong> <span id="viewEmail">–</span></p>
+        <p><strong>Phone:</strong> <span id="viewPhone">–</span></p>
+        <p><strong>Fitness Goal:</strong> <span id="viewGoal">–</span></p>
+        <p><strong>Membership Start Date:</strong> <span id="viewStartDate">–</span></p>
+        <p><strong>Membership End Date:</strong> <span id="viewEndDate">–</span></p>
+
+        <div class="form-actions" style="margin-top: 1.5rem;">
+          <a href="#list" class="btn">Back to Client List</a>
+          <button id="editFromViewBtn" type="button" class="btn ghost">
+            Edit This Client
+          </button>
+        </div>
+      </div>
+
+      <!-- Training history -->
+      <div class="card">
+        <h2>Training History</h2>
+        <div id="viewHistoryContent">
+          <p class="subtle" id="viewHistoryPlaceholder">
+            No training history recorded yet.
+          </p>
+        </div>
+      </div>
+
+      <!-- Next session exercises (from API) -->
+      <div class="card">
+        <h2>Next Session Exercises</h2>
+
+        <p class="subtle" id="viewExercisesPlaceholder">
+          We'll load exercises from an API here.
+        </p>
+
+        <ul id="nextExercisesList"></ul>
       </div>
     </section>
   </main>
@@ -277,6 +229,10 @@
   </footer>
 
   <!-- Default route to Home -->
-  <a class="route-default" href="#home"> </a>
+  <a class="route-default" href="#home"></a>
+
+  <!-- Our JavaScript file -->
+  <script src="js/main.js"></script>
 </body>
+
 </html>
