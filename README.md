@@ -1,251 +1,138 @@
-# FitCRM – Client Management System for Fitness Professionals
+# FitCRM - Simple Client Manager for Fitness Programs
 
-<div align="center">
+## Project Description
 
-**A modern, lightweight CRM web application designed specifically for fitness professionals to manage client information, track fitness goals, and plan training sessions.**
+FitCRM is a lightweight client relationship management (CRM) web application built for fitness professionals like personal trainers, fitness instructors, and small gym owners. The app helps manage basic client information, track fitness goals, and plan workout sessions. This is a frontend-only project that uses browser localStorage for data persistence, so no backend server is needed.
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+This project was developed as part of CSCE 4502 - Design of Web-based Systems (Fall 2025), Assignment #2, building upon the foundation established in Assignment 1.
 
-</div>
+## Tech Stack
 
----
+- **HTML5** - Structure and semantic markup
+- **CSS3** - Styling with Flexbox/Grid for responsive layouts
+- **JavaScript (ES6+)** - Client-side logic and interactivity
+- **localStorage API** - Browser-based data persistence
+- **Wger Workout Manager API** - External REST API for fetching exercise data
 
-## 📋 Table of Contents
+## Live Demo
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
-- [Usage Guide](#-usage-guide)
-- [Data Validation](#-data-validation)
-- [Deployment](#-deployment)
-- [Browser Support](#-browser-support)
-- [Future Enhancements](#-future-enhancements)
-- [License](#-license)
+**Deployed App:** https://faridafitcrm.netlify.app/
 
----
+**GitHub Repository:** https://github.com/FaridaHisham/Assignment-1---FitCRM
 
-## 🎯 Overview
+## Features
 
-FitCRM is a fully functional client management system built for fitness instructors, personal trainers, and gym owners. It provides an intuitive interface to manage client information, track membership dates, set fitness goals, and plan workout sessions with exercises from the Wger API.
-
-**Key Highlights:**
-- ✅ **Fully Functional** - Complete CRUD operations with localStorage persistence
-- ✅ **Smart Validation** - Comprehensive form validation including date validation
-- ✅ **Responsive Design** - Beautiful UI that works seamlessly on desktop, tablet, and mobile
-- ✅ **API Integration** - Fetches real exercise data from Wger Workout Manager API
-- ✅ **No Backend Required** - Pure frontend application using browser localStorage
-
----
-
-## ✨ Features
-
-### 1. **Client Management**
-- **Add New Clients** with comprehensive information:
-  - Full Name, Age, Gender
-  - Email and Phone contact details
-  - Fitness Goal (predefined or custom)
+### Page 1: New Client Form
+- Add new clients with the following information:
+  - Full Name
+  - Age and Gender
+  - Email and Phone
+  - Fitness Goal (predefined options or custom)
   - Membership Start Date and End Date
-- **Edit Existing Clients** - Update client information anytime
-- **Delete Clients** - Remove clients with confirmation prompt
-- **View Client Details** - Dedicated page showing full client profile
+- Form validation for all fields
+- Data saved to localStorage when "Add Client" button is clicked
 
-### 2. **Smart Search & Filtering**
-- Real-time search by client name
-- Instant table filtering
-- Keyboard shortcuts (Enter to search, Escape to clear)
+### Page 2: Client List View
+- Display all clients in a table format
+- **Search** - Find clients by name
+- **View** - Click on a client to see their full details (goes to Page 3)
+- **Edit** - Update client information (form repopulates with existing data)
+- **Delete** - Remove client from list with confirmation prompt
+- All changes persist in localStorage
 
-### 3. **Data Validation**
-- **Email Validation** - Must end in `.com` or `.edu`
-- **Phone Validation** - Exactly 11 digits required
-- **Age Validation** - Between 5 and 120 years
-- **Date Validation**:
-  - Membership Start Date cannot be in the past
-  - Membership End Date must be after Start Date
+### Page 3: Client View
+- Display complete client information:
+  - Name, Email, Phone
+  - Fitness Goal
+  - Membership Start Date and End Date
+  - Training history
+  - Suggested exercises for next session
+- Fetches 5 random exercises from the Wger API for workout planning
+- Option to edit client directly from this page
 
-### 4. **Exercise Planning**
-- Integration with **Wger Workout Manager API**
-- Automatically suggests 5 random exercises for client sessions
-- English-only exercise names for clarity
-- Displays exercises with clean, modern UI
+## Form Validation
 
-### 5. **Data Persistence**
-- All client data stored in browser's **localStorage**
-- Data persists across browser sessions
-- No server or database required
+The app includes validation to ensure data quality:
+- **Email** - Must end in `.com` or `.edu`
+- **Phone** - Must be exactly 11 digits
+- **Age** - Must be between 5 and 120 (if provided)
+- **Membership Start Date** - Cannot be in the past
+- **Membership End Date** - Must be after the start date
+- All required fields must be filled before submission
 
-### 6. **Responsive Design**
-- Mobile-first approach
-- Optimized layouts for:
-  - 📱 Mobile phones (< 480px)
-  - 📱 Tablets (481px - 768px)
-  - 💻 Desktops (> 769px)
-- Touch-friendly interface
-- Smooth scrolling and animations
+## Responsive Design
 
----
+The app is fully responsive and works well on:
+- Desktop computers
+- Tablets
+- Mobile phones
 
-## 🛠 Tech Stack
+CSS Flexbox and Grid are used for flexible layouts, and media queries ensure the interface adapts to different screen sizes.
 
-| Technology | Purpose |
-|------------|---------|
-| **HTML5** | Semantic structure and accessibility |
-| **CSS3** | Modern styling with Flexbox & Grid |
-| **JavaScript (ES6+)** | Client-side logic and interactivity |
-| **localStorage API** | Client-side data persistence |
-| **Wger API** | Exercise database integration |
-
-**Design Features:**
-- Pastel purple theme with gradient accents
-- Glassmorphism effects
-- Smooth transitions and hover states
-- Custom form styling with focus states
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- No installation or build tools required!
-
-### Local Setup
-
-1. **Clone or Download** the repository:
-   ```bash
-   git clone https://github.com/yourusername/fitcrm.git
-   cd fitcrm
-   ```
-
-2. **Open the application**:
-   - Simply double-click `index.html`, or
-   - Right-click `index.html` → Open With → Your Browser, or
-   - Use a local server (optional):
-     ```bash
-     # Python 3
-     python -m http.server 8000
-     
-     # Node.js (with http-server)
-     npx http-server
-     ```
-
-3. **Start using FitCRM!**
-   - Navigate to `http://localhost:8000` if using a local server
-   - Or just open the file directly in your browser
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
-FitCRM/
-├── index.html              # Main HTML file with all pages
+fitcrm/
+├── index.html              # Main HTML file containing all pages
 ├── css/
-│   └── styles.css          # Complete styling and responsive design
+│   └── styles.css          # All styling and responsive design
 ├── js/
-│   └── main.js             # Application logic and API integration
+│   └── main.js             # JavaScript logic and API integration
 ├── assets/
-│   └── icons/
-│       ├── delete.svg      # Delete action icon
-│       ├── edit.svg        # Edit action icon
-│       ├── logo.svg        # FitCRM brand logo
-│       └── search.svg      # Search icon
+│   └── icons/              # SVG icons for UI elements
+│       ├── delete.svg
+│       ├── edit.svg
+│       ├── logo.svg
+│       └── search.svg
 └── README.md               # This file
 ```
 
----
+## How to Run Locally
 
-## 📖 Usage Guide
+If you want to run the project on your local machine:
 
-### Adding a New Client
+1. Clone or download this repository
+2. Open the `index.html` file in any modern web browser (Chrome, Firefox, Safari, Edge)
+3. That's it! No build process or dependencies to install.
 
-1. Click **"New Client"** from the navigation or home page
-2. Fill in all required fields:
-   - Full Name, Age, Gender
-   - Email (must end in .com or .edu)
-   - Phone (exactly 11 digits)
-   - Fitness Goal (select from dropdown or enter custom)
-   - Membership Start Date (today or future)
-   - Membership End Date (must be after start date)
-3. Click **"Add Client"** button
-4. Client will be saved and appear in the Client List
+Alternatively, you can use a local server:
+```bash
+# Using Python 3
+python -m http.server 8000
 
-### Viewing Client Details
+# Using Node.js http-server
+npx http-server
+```
 
-1. Navigate to **"Client List"**
-2. Click the **"View"** button next to any client
-3. See complete client information
-4. View suggested exercises for next training session
-5. Click **"Edit This Client"** to make changes
+Then navigate to `http://localhost:8000` in your browser.
 
-### Editing a Client
+## Deployment Method
 
-1. From the Client List, click the **Edit** icon (pencil)
-2. Form will populate with existing data
-3. Make your changes
-4. Click **"Save Changes"**
-5. Click **"Cancel Edit"** to discard changes
+This project is deployed on **Netlify**. The deployment process was straightforward:
 
-### Deleting a Client
+1. Created a GitHub repository with the project code
+2. Connected the repository to Netlify
+3. Configured build settings (no build command needed since it's a static site)
+4. Set publish directory to `/` (root)
+5. Deployed automatically
 
-1. From the Client List, click the **Delete** icon (trash)
-2. Confirm deletion in the popup
-3. Client will be permanently removed from localStorage
+The app is now live and accessible at: https://faridafitcrm.netlify.app/
 
-### Searching Clients
+## Data Persistence
 
-1. Navigate to **"Client List"**
-2. Type client name in the search box
-3. Press **Enter** or click **"Search"**
-4. Press **Escape** to clear search and show all clients
+All client data is stored in the browser's localStorage, which means:
+- Data persists even after closing the browser
+- No server or database required
+- Data is stored locally on each user's device
+- Clearing browser data will remove all stored clients
 
----
+## API Integration
 
-## ✅ Data Validation
-
-FitCRM includes comprehensive validation to ensure data integrity:
-
-| Field | Validation Rules |
-|-------|------------------|
-| **Full Name** | Required |
-| **Age** | Optional, but if provided must be 5-120 |
-| **Gender** | Required, dropdown selection |
-| **Email** | Required, must end in `.com` or `.edu` |
-| **Phone** | Required, exactly 11 digits |
-| **Fitness Goal** | Required, dropdown or custom text |
-| **Start Date** | Required, cannot be in the past |
-| **End Date** | Required, must be after Start Date |
-
-**Error Messages:**
-- Clear, user-friendly alerts guide users to correct input
-- Validation happens on form submission
-- Prevents invalid data from being saved
-
----
-
-## 🌐 Deployment
-
-### Option 1: GitHub Pages
-
-1. Push your code to a GitHub repository (must be public)
-2. Go to repository **Settings** → **Pages**
-3. Under **Source**, select branch (e.g., `main`) and folder (`/root`)
-4. Click **Save**
-5. Your site will be live at: `https://yourusername.github.io/fitcrm/`
-
-### Option 2: Netlify
-
-1. Go to [netlify.com](https://www.netlify.com) and sign up
-2. Click **"Add New Site"** → **"Import an Existing Project"**
-3. Connect your GitHub account and select your repository
-4. **Build settings:**
-   - Build command: (leave empty)
-   - Publish directory: `/` (root)
-5. Click **Deploy**
-6. Your site will be live with a custom Netlify URL
-
-
-I Deployed using Netflify my deployed webapp is on this link : https://faridafitcrm.netlify.app/
+The app integrates with the **Wger Workout Manager API** to fetch exercise suggestions:
+- API Documentation: https://wger.de/en/software/api
+- Fetches 5 random exercises for each client's training session
+- Filters for English-language exercises only
+- Displays exercise names in a clean, readable format
+  
+**Assignment:** #2  
+**Student:** Farida Hisham
